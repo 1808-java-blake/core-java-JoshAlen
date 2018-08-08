@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -131,7 +132,37 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		final Map<String, Integer> letterValues = new HashMap<String, Integer>(){{
+			put("Z", 10);
+			put("Q", 10);
+			put("J", 8);
+			put("X", 8);
+			put("K", 5);
+			put("Y", 4);
+			put("W", 4);
+			put("V", 4);
+			put("H", 4);
+			put("F", 4);
+			put("P", 3);
+			put("M", 3);
+			put("C", 3);
+			put("B", 3);
+			put("G", 2);
+			put("D", 2);
+		}};
+		int pointCounter = 0;
+		for(int i = 0; i < string.length(); i++){
+			String letter = Character.toString(string.charAt(i));
+			letter = letter.toUpperCase();
+			if((letterValues.get(letter) == null)){
+				pointCounter += 1;
+				continue;
+			}
+
+			pointCounter += letterValues.get(letter);
+		}
+
+		return pointCounter;
 	}
 
 	/**
@@ -167,7 +198,11 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		string = string.replaceAll( "[^\\d]", "" );
+		if(string.length() != 9){
+			throw new IllegalArgumentException("wrong argument");
+		}
+		return string;
 	}
 
 	/**
@@ -181,7 +216,20 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		Map<String, Integer> wordMap = new HashMap<String, Integer>();
+		string = string.replaceAll(",", " ").replaceAll("\n", "");
+
+		String[] wordArr = string.split("\\s+");
+
+		for(int i = 0; i < wordArr.length; i++){
+			if(wordMap.get(wordArr[i]) == null){
+				wordMap.put(wordArr[i], 1);
+			} else {
+				int count = wordMap.get(wordArr[i]) + 1;
+				wordMap.put(wordArr[i], count);
+			}
+		}
+		return wordMap;
 	}
 
 	/**
