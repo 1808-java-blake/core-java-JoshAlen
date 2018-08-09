@@ -272,6 +272,25 @@ public class EvaluationService {
 
 		public int indexOf(T t) {
 			// TODO Write an implementation for this method declaration
+
+			List<T> list = getSortedList();
+            int begin = 0;
+            int last = list.size() - 1;
+            int mid = 0;
+			int value = Integer.parseInt(t.toString());
+
+			while(begin <= last){
+				mid = (begin + last) / 2;
+				int test = Integer.parseInt(list.get(mid).toString());
+				if(test < value){
+					begin = mid + 1;
+				} else if (test > value) {
+					last = mid - 1;
+				} else {
+					return mid;
+				}
+			}
+
 			return 0;
 		}
 
@@ -309,7 +328,8 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String newStr = string.replaceAll("([^aeiou]*)([aeiou]\\w+)", "$2$1ay");
+		return newStr;
 	}
 
 	/**
