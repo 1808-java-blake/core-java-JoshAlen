@@ -1,6 +1,8 @@
 package com.revature.eval.java.core;
 
+import javax.lang.model.element.NestingKind;
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -349,6 +351,20 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
+		String result = String.valueOf(input);
+		String[] numArr = result.split("");
+		int length = numArr.length;
+		int testValue = 0;
+
+		for(int i = 0; i < length; i++){
+			testValue += (int) Math.pow(Integer.parseInt(numArr[i]), length);
+		}
+
+
+		if(testValue == input){
+			return true;
+		}
+
 		return false;
 	}
 
@@ -364,7 +380,20 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		List<Long> primeArr = new ArrayList<>();
+
+			int index = 2;
+			while(index < l){
+				if(l % index == 0){
+					l /= index;
+					primeArr.add((long) index);
+				} else {
+					index++;
+				}
+			}
+			primeArr.add(l);
+
+		return primeArr;
 	}
 
 	/**
@@ -393,6 +422,7 @@ public class EvaluationService {
 	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
 	 * quick brown fox jumps over the lazy dog.
 	 */
+
 	static class RotationalCipher {
 		private int key;
 
@@ -422,6 +452,7 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
+
 		return 0;
 	}
 
