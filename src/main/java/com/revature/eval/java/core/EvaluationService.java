@@ -198,7 +198,7 @@ public class EvaluationService {
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
 		string = string.replaceAll( "[^\\d]", "" );
-		if(string.length() != 9){
+		if(string.length() != 10){
 			throw new IllegalArgumentException("wrong argument");
 		}
 		return string;
