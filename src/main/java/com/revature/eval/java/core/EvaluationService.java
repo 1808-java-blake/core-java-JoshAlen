@@ -436,8 +436,19 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
-
-			return null;
+			StringBuffer newStr = new StringBuffer();
+			for(int i = 0; i < string.length(); i++) {
+				if (string.charAt(i) < 65 || string.charAt(i) > 122) {
+					newStr.append(string.charAt(i));
+				}else if(Character.isLowerCase(string.charAt(i))){
+					char letter = (char) (((int)string.charAt(i) + this.key - 97) % 26 + 97);
+					newStr.append(letter);
+				} else {
+					char letter = (char) (((int)string.charAt(i) + this.key - 65) % 26 +  65);
+					newStr.append(letter);
+				}
+			}
+			return newStr.toString();
 		}
 
 
@@ -458,16 +469,17 @@ public class EvaluationService {
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
 		System.out.println(i);
-		ArrayList<Integer> prime = new ArrayList<Integer>(){{
-				add(2);
-				add(3);
-				add(5);
-				add(7);
-				add(11);
-				add(13);
-		}};
 
-		return 0;
+		int index = 0;
+		int prime  = 0;
+		for(int j = 2; index < i; j++){
+			if(i % j != 0){
+				index++;
+			}
+			prime = j;
+		}
+
+		return prime;
 
 	}
 
