@@ -436,6 +436,7 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
+
 			return null;
 		}
 
@@ -700,9 +701,9 @@ public class EvaluationService {
 			break;
 			case "minus": result = num1 - pi(strArr[2]);
 			break;
-			case "multiplied": result = num1 * pi(strArr[2]);
+			case "multiplied": result = num1 * pi(strArr[3]);
 			break;
-			case "divided": result = num1 / pi(strArr[2]);
+			case "divided": result = num1 / pi(strArr[3]);
 			break;
 		}
 
