@@ -327,15 +327,14 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-//		String[] strArr = string.split(" ");
-//		String newStr = new String();
-//
-//		for(int i = 0; i < strArr.length; i++){
-//			newStr += strArr[i].replaceAll("([^aeiou]*)([aeiou]\\w+)", "$2$1ay") + " ";
-//		}
-//
-//		return newStr.trim();
-		return null;
+		String[] strArr = string.split(" ");
+		String newStr = new String();
+
+		for(int i = 0; i < strArr.length; i++){
+			newStr += strArr[i].replaceAll("([^aeiou]*)([aeiou]\\w+)", "$2$1ay") + " ";
+		}
+
+		return newStr.trim();
 	}
 
 	/**
