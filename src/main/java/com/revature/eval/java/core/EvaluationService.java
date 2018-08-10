@@ -363,7 +363,6 @@ public class EvaluationService {
 			testValue += (int) Math.pow(Integer.parseInt(numArr[i]), length);
 		}
 
-
 		if(testValue == input){
 			return true;
 		}
@@ -472,7 +471,7 @@ public class EvaluationService {
 
 		int index = 0;
 		int prime  = 0;
-		for(int j = 2; index < i; j++){
+		for(int j = 2; index < i; ++j){
 			if(i % j != 0){
 				index++;
 			}
@@ -517,7 +516,26 @@ public class EvaluationService {
 		 */
 		public static String encode(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			String ss = string.replaceAll("[ ,\\.]", "");
+			ss = ss.toLowerCase();
+			StringBuilder newStr = new StringBuilder();
+			int count = 0;
+			for(char letter : ss.toCharArray()){
+				if(Character.isLetter(letter)){
+					int newLetter = ('a' - letter) + 'z';
+					newStr.append((char) newLetter);
+					count +=1;
+				} else {
+					newStr.append(letter);
+					count +=1;
+				}
+				if(count == 5){
+					newStr.append(' ');
+					count = 0;
+				}
+			}
+			return newStr.toString().trim();
+
 		}
 
 		/**
@@ -528,7 +546,18 @@ public class EvaluationService {
 		 */
 		public static String decode(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			String ss = string.replaceAll(" ", "");
+			StringBuilder newStr = new StringBuilder();
+
+			for(char letter : ss.toCharArray()){
+				if(Character.isLetter(letter)){
+					int newLetter = ('z' - letter) + 'a';
+					newStr.append((char) newLetter);
+ 				} else {
+					newStr.append(letter);
+				}
+			}
+			return newStr.toString();
 		}
 	}
 
