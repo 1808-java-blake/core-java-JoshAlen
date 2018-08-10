@@ -2,10 +2,7 @@ package com.revature.eval.java.core;
 
 import javax.lang.model.element.NestingKind;
 import java.time.temporal.Temporal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EvaluationService {
 
@@ -442,6 +439,7 @@ public class EvaluationService {
 			return null;
 		}
 
+
 	}
 
 	/**
@@ -458,8 +456,18 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
+		System.out.println(i);
+		ArrayList<Integer> prime = new ArrayList<Integer>(){{
+				add(2);
+				add(3);
+				add(5);
+				add(7);
+				add(11);
+				add(13);
+		}};
 
 		return 0;
+
 	}
 
 	/**
@@ -535,6 +543,29 @@ public class EvaluationService {
 	 */
 	public boolean isValidIsbn(String string) {
 		// TODO Write an implementation for this method declaration
+
+		String newStr = string.replaceAll("[^X\\d]", "");
+
+		if(newStr.length() != 10){
+			return false;
+		}
+
+		String[] numArr = newStr.split("");
+		int x = 10;
+		int result = 0;
+
+		for(int i = 0; i < numArr.length; i++){
+				if("X".equals(numArr[i])){
+					result = result + x * 10;
+				} else {
+					result = result + x * Integer.parseInt(numArr[i]);
+				}
+				x--;
+		}
+
+		if((result % 11) == 0){
+			return true;
+		}
 		return false;
 	}
 
@@ -657,7 +688,28 @@ public class EvaluationService {
 	 */
 	public int solveWordProblem(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+
+		String newStr = string.replaceAll("(What is )(.*)(\\?)", "$2");
+		String[] strArr = newStr.split(" ");
+
+		int result = 0;
+		int num1 = Integer.parseInt(strArr[0]);
+
+		switch (strArr[1]){
+			case "plus": result =  num1 + pi(strArr[2]);
+			break;
+			case "minus": result = num1 - pi(strArr[2]);
+			break;
+			case "multiplied": result = num1 * pi(strArr[2]);
+			break;
+			case "divided": result = num1 / pi(strArr[2]);
+			break;
+		}
+
+		return result;
 	}
 
+	public int pi(String word){
+		return Integer.parseInt(word);
+	}
 }
