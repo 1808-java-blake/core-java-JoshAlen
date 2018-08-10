@@ -626,7 +626,14 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		String alphabet = "abcdefghijklmnopqrstuvwxyz";
+		String[] newAlphabet = alphabet.split("");
+		for(int i = 0; i < newAlphabet.length; i++){
+			if(string.indexOf(newAlphabet[i]) == -1){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -639,7 +646,11 @@ public class EvaluationService {
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
 		// TODO Write an implementation for this method declaration
-		return null;
+
+
+
+
+		return given;
 	}
 
 	/**
